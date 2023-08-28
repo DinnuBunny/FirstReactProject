@@ -1,10 +1,15 @@
-import {Route} from 'react-router-dom'
+// import {Route} from 'react-router-dom'
+import ApiCalls from './ApiCalls';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World!</h1>
+      <h1>Hello World!
+      <br />
+      Hello My Friend How are you?
+      </h1>
+      <ApiCalls />
     </div>
   );
 }
