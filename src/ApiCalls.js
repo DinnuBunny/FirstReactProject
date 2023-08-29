@@ -1,14 +1,14 @@
 import { Component } from "react";
 
 class ApiCalls extends Component{
-    state = {date : undefined}
+    state = {todoList : []}
 
     componentDidMount(){
         this.fetchTheData()
     }
 
     fetchTheData = async() => {
-        const apiUrl = "https://dinnu-express-app-627612a8146d.herokuapp.com/"
+        const apiUrl = "https://dinnu-express-app-627612a8146d.herokuapp.com/todos/"
         const options = {
             method : 'GET',
             headers : {
@@ -18,15 +18,18 @@ class ApiCalls extends Component{
         const response = await fetch(apiUrl, options)
         if(response.ok){
           const data = await response.json()
-          console.log(data)
+          this.setState({todoList : data})
         }
-        console.log("fetchTheData")
     }
 
     render(){
+        const {todoList} = this.state
         return(
             <div>
                 <h1>ApiCalls Component</h1>
+                {todoList.length !== 0 && (<div>
+                    {JSON.stringify(todoList)}
+                    </div>)}
             </div>
         )
     }
